@@ -1,4 +1,5 @@
 import express from 'express';
+import { getUrls } from './getUrls.js';
 import { ping } from './ping.js';
 import { redirect } from './redirect.js';
 
@@ -9,10 +10,10 @@ const getApi = ({ store }) => {
 	api.get('/api/ping', ping());
 
 	// Commands
-	api.post('/api/shorten-url', ...);
+	// api.post('/api/shorten-url', ...);
 
 	// Queries
-	api.post('/api/get-urls', ...);
+	api.get('/api/get-urls', getUrls({ store }));
 	api.get('/:alias', redirect({ store }));
 
 	return api;

@@ -20,6 +20,15 @@ class InMemoryStore {
 	}
 
 	//biome-ignore lint/suspicious/useAwait: To conform to the store interface, this method must be async.
+	async findAll() {
+		return Object.entries(this.#urls)
+			.map(([alias, url]) => ({
+				alias,
+				url
+			}));
+	}
+
+	//biome-ignore lint/suspicious/useAwait: To conform to the store interface, this method must be async.
 	async findByAlias(alias) {
 		const url = this.#urls[alias];
 

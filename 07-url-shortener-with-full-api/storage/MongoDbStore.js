@@ -27,6 +27,10 @@ class MongoDbStore {
 		await this.#collection.insertOne({ alias, url });
 	}
 
+	async findAll() {
+		throw new Error('Not yet implemented');
+	}
+
 	async findByAlias(alias) {
 		const { url } = await this.#collection.findOne({ alias });
 		logger.debug('found url', { alias, url });
