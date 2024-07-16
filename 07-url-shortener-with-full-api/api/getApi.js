@@ -1,3 +1,4 @@
+import cors from 'cors';
 import express from 'express';
 import { getUrls } from './getUrls.js';
 import { ping } from './ping.js';
@@ -7,6 +8,7 @@ import { shortenUrl } from './shortenUrl.js';
 const getApi = ({ store }) => {
 	const api = express();
 
+	api.use(cors());
 	api.use(express.json({ limit: '10kb' }));
 
 	// Technical stuff, such as ping, health, …
