@@ -1,7 +1,7 @@
-const ping = function () {
-    return (req, res) => {
-        res.json({ ping: 'pong' });
-    };
+const ping = () => {
+	return (_req, res) => {
+		res.json({ ping: 'pong' });
+	};
 };
 
 export { ping };

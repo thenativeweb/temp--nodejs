@@ -13,14 +13,14 @@ const connectionString = process.env.CONNECTION_STRING ?? 'mongodb://localhost:2
 
 let store;
 switch (databaseType) {
-    case 'inmemory':
-        store = await InMemoryStore.initialize();
-        break;
-    case 'mongodb':
-        store = await MongoDbStore.initialize({ connectionString });
-        break;
-    default:
-        throw new Error(`unsupported database type '${databaseType}'`);
+	case 'inmemory':
+		store = await InMemoryStore.initialize();
+		break;
+	case 'mongodb':
+		store = await MongoDbStore.initialize({ connectionString });
+		break;
+	default:
+		throw new Error(`unsupported database type '${databaseType}'`);
 }
 
 await setupDemoData({ store });
@@ -29,5 +29,5 @@ const api = getApi({ store });
 const server = http.createServer(api);
 
 server.listen(port, () => {
-    logger.info('server is running', { port });
+	logger.info('server is running', { port });
 });

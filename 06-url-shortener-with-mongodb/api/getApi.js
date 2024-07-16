@@ -2,13 +2,13 @@ import express from 'express';
 import { ping } from './ping.js';
 import { redirect } from './redirect.js';
 
-const getApi = function ({ store }) {
-    const api = express();
+const getApi = ({ store }) => {
+	const api = express();
 
-    api.get('/ping', ping());
-    api.get('/:alias?', redirect({ store }));
+	api.get('/ping', ping());
+	api.get('/:alias?', redirect({ store }));
 
-    return api;
+	return api;
 };
 
 export { getApi };
