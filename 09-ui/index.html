@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>URL shortener</title>
+
+    <script type="module">
+        const res = await fetch('http://localhost:3000/api/get-urls');
+        const data = await res.json()
+
+        const table = document.getElementById('existing-urls');
+        data.forEach(({ alias, url }) => {
+            const row = document.createElement('tr');
+            const aliasCell = document.createElement('td');
+            aliasCell.textContent = alias;
+            row.appendChild(aliasCell);
+
+            const urlCell = document.createElement('td');
+            urlCell.textContent = url;
+            row.appendChild(urlCell);
+
+            table.appendChild(row);
+        });
+    </script>
+</head>
+
+<body>
+    <h1>URL shortener</h1>
+    <h2>Existing URLs</h2>
+    <table id="existing-urls"></table>
+</body>
+
+</html>
